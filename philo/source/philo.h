@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:10 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/29 20:22:18 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/29 22:23:18 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@
 # include <limits.h>
 
 # define MAX_PHILO				200
-# define STATE_THINKING			4
-# define STATE_EATING			8
-# define STATE_SLEEPING			16
-# define STATE_LEFT_FORK_TAKEN	1
-# define STATE_LEFT_FORK_TAKEN	2
+# define STATE_THINKING			1
+# define STATE_EATING			2
+# define STATE_SLEEPING			4
 # define STATE_DEAD				0
 # define TIME_INCREMENT			50
 
@@ -36,9 +34,11 @@ typedef struct s_philo
 	pthread_t		philo_thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	int				state;
+	int				taken_left_fork;
+	int				taken_right_fork;
 	unsigned long	start_time;
 	unsigned long	last_meal_time;
-	char			state;
 }	t_philo;
 
 // s_prop
