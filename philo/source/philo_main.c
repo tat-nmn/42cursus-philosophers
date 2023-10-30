@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:25:37 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/29 22:22:04 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:31:48 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	join_destroy(pthread_t philo, pthread_mutex_t *mutex_forks)
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	t_table     table;
+	int		i;
+	t_table	table;
 
 	if (!philo_check_args(argc, argv))
     {
