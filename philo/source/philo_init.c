@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:55:43 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/29 22:16:39 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:35:45 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	philo_init_table(t_table *table, int argc, char **argv)
 		table->count_eat = ft_atoi(argv[5])
 	i = -1;
 	while (++i < table->count_philo)
-	{	
+	{
 		philos[i].id = i + 1;
 		philos[i].state = STATE_THINKING;
 		philos[i].taken_left_fork = 0;
