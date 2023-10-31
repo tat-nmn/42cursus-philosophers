@@ -6,11 +6,13 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:55:43 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/31 16:35:45 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:14:20 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	philo_init_table_loop();
 
 int	philo_check_args(int argc, char **argv)
 {
@@ -45,6 +47,7 @@ void	philo_init_table(t_table *table, int argc, char **argv)
 	else
 		table->count_eat = ft_atoi(argv[5])
 	i = -1;
+	
 	while (++i < table->count_philo)
 	{
 		philos[i].id = i + 1;

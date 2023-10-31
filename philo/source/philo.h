@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:10 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/29 22:23:18 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:14:37 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_philo
 	pthread_t		philo_thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	t_table			*table;
 	int				state;
 	int				taken_left_fork;
 	int				taken_right_fork;

@@ -6,15 +6,15 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:25:37 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/31 16:35:45 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:52:58 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	philo_join_destroy(pthread_t philo, pthread_mutex_t *fork)
+static void	philo_join_destroy(pthread_t philo_thread, pthread_mutex_t *fork)
 {
-	pthread_join(philo, NULL);
+	pthread_join(philo_thread, NULL);
 	pthread_mutex_destroy(fork);
 }
 
