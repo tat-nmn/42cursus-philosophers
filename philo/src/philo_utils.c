@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:50:15 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/31 19:11:00 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 03:34:01 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,36 @@ unsigned long	gettimeofday_ms(void)
 	return ((time.tv_sec * 1000L) + (time.tv_usec / 1000L));
 }
 
-int	philo_is_dead(t_table *table, t_philo *philo)
+int	philo_someone_died(t_table *table, t_philo *philo)
 {
-	if ((gettimeofday_ms() >= philo->last_meal_time
-			+ (unsigned long) table->time_die) || philo->state == STATE_DEAD)
+	if (table->there_is_dead_philo)
 		return (1);
+	if (gettimeofday_ms() >= philo->last_meal_time + table->time_die)
+	{
+		philo->state = PHILO_DIED;
+		table->there_is_dead_philo = 1;
+		return (1);
+	}
 	return (0);
 }
 
-void	philo_init_time(t_philo *philo)
+void	philo_print(t_philo *philo, int action)
 {
 	unsigned long	time_ms;
 
-	time_ms = gettimeofday_ms();
-	philo->start_time = time_ms;
-	philo->last_meal_time = time_ms;
-}
-
-void	philo_print(t_table *table, t_philo *philo, int state)
-{
-	unsigned long	time_ms;
-
-	time_ms = gettimeofday_ms() - (unsigned long) philo->s_time;
-	if (state == FORK_TAKEN)
+	time_ms = gettimeofday_ms() - philo->table->start_time;
+	if (action == PHILO_THINKING && philo->state != PHILO_THINKING)
 	{
-		printf("%20lu %3d has taken a fork\n", time_ms, philo->id);
+		printf("%8lu %3d is thinking\n", time_ms, philo->id);
+		philo->state = PHILO_THINKING;
 	}
-	else if (state == STATE_THINKING && philo->state != STATE_THINKING)
-	{
-		printf("%5lu %3d is thinking\n", time_ms, philo->id);
-		philo->state = STATE_THINKING;
-	}
-	else if (state == STATE_EATING)
-		printf("%20lu %3d is eating\n", time_ms, philo->id);
-	else if (state == STATE_SLEEPING)
-		printf("%20lu %3d is sleeping\n", time_ms, philo->id);
-	else if (state == STATE_DEAD)
-		printf("%20lu %3d died\n", time_ms, philo->id);
+	philo->state = action;
+	if (action == PHILO_TAKE_FORK)
+		printf("%8lu %3d has taken a fork\n", time_ms, philo->id);
+	if (action == PHILO_EATING)
+		printf("%8lu %3d is eating\n", time_ms, philo->id);
+	if (action == PHILO_SLEEPING)
+		printf("%8lu %3d is sleeping\n", time_ms, philo->id);
+	if (action == PHILO_DIED)
+		printf("%8lu %3d died\n", time_ms, philo->id);
 }

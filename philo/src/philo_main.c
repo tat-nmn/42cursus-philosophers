@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:25:37 by tnualman          #+#    #+#             */
-/*   Updated: 2023/10/31 18:52:58 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 02:21:39 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ int	main(int argc, char **argv)
 	t_table	table;
 
 	if (!philo_check_args(argc, argv))
-    {
-        printf("Error: invalid argument(s)!");
-        return (0);
-    }
+	{
+		printf("Error: invalid argument(s)!");
+		return (0);
+	}
 	philo_init_table(&table, argc, argv);
 	i = -1;
-    while (++i < table.count_philo)
+	while (++i < table.count_philo)
 		if (i % 2 == 0)
-			pthread_create(&((table.philos)[i].philo_thread), NULL,
-				&philo_routine, &table);
-	usleep(TIME_INCREMENT);
+			pthread_create(&(table.philos[i].philo_thread), NULL,
+				&philo_routine, table.philos + i);
+	usleep(USEC_INCREMENT);
 	while (--i >= 0)
 		if (i % 2 == 1)
-			pthread_create(&((table.philos)[i].philo_thread), NULL,
-				&philo_routine, &table);
-	while (++i < table.count_philo))
-		philo_join_destroy(philo[(table.philos)[i].philo_thread,
-			table.forks + i);
+			pthread_create(&(table.philos[i].philo_thread), NULL,
+				&philo_routine, table.philos + i);
+	while (++i < table.count_philo)
+		philo_join_destroy(table.philos[i].philo_thread,
+			&(table.forks[i].mutex));
 	return (0);
 }

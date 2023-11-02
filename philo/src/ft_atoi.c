@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnualman <tnualman@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:44:25 by tnualman          #+#    #+#             */
-/*   Updated: 2022/09/19 03:41:58 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 00:48:33 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-static int	ft_static_isspace(const char c)
+static int	ft_isspace(const char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n'
 		|| c == '\v' || c == '\r' || c == '\f')
@@ -48,7 +48,7 @@ int	ft_atoi(const char *str)
 
 	acc = 0;
 	sign = 1;
-	while (ft_static_isspace(*str))
+	while (ft_isspace(*str))
 		str++;
 	if (*str == '-')
 		sign = -1;
