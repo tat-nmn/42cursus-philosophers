@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:25:37 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 02:21:39 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:26:37 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 
 	if (!philo_check_args(argc, argv))
 	{
-		printf("Error: invalid argument(s)!");
+		printf("Error: invalid argument(s)!\n");
 		return (0);
 	}
 	philo_init_table(&table, argc, argv);
