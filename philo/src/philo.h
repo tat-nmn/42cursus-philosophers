@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:10 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 04:04:10 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:06:30 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define FORK_IDLE			0
 # define FORK_LEFT			1
 # define FORK_RIGHT			2
-# define USEC_INCREMENT		500
+# define USEC_INCREMENT		100
 # define FT_INT_MAX			0x7FFFFFFF
 
 typedef struct s_fork
@@ -62,6 +62,7 @@ typedef struct s_table
 	unsigned long	start_time;
 	t_philo			philos[MAX_PHILO];
 	t_fork			forks[MAX_PHILO];
+	pthread_mutex_t	mutex_printf;
 }	t_table;
 
 // ft_atoi.c

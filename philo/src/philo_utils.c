@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:50:15 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 03:34:01 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:04:24 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	philo_print(t_philo *philo, int action)
 {
 	unsigned long	time_ms;
 
+	pthread_mutex_lock(&(philo->table->mutex_printf));
 	time_ms = gettimeofday_ms() - philo->table->start_time;
 	if (action == PHILO_THINKING && philo->state != PHILO_THINKING)
 	{
@@ -52,4 +53,5 @@ void	philo_print(t_philo *philo, int action)
 		printf("%8lu %3d is sleeping\n", time_ms, philo->id);
 	if (action == PHILO_DIED)
 		printf("%8lu %3d died\n", time_ms, philo->id);
+	pthread_mutex_unlock(&(philo->table->mutex_printf));
 }

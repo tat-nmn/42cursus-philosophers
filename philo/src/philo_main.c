@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:25:37 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 17:26:37 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:32:23 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	philo_init_table(&table, argc, argv);
+	pthread_mutex_init(&(table.mutex_printf), NULL);
 	i = -1;
 	while (++i < table.count_philo)
 		if (i % 2 == 0)
