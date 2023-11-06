@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:50:15 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/05 22:15:20 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:21:41 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ unsigned long	gettimeofday_ms(void)
 	return ((time.tv_sec * 1000L) + (time.tv_usec / 1000L));
 }
 
-int	philo_someone_died(t_table *table, t_philo *philo)
+int	philo_check_for_dead(t_table *table, t_philo *philo)
 {
 	if (table->there_is_dead_philo)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:10:28 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 03:34:01 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:22:29 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*philo_routine(void *args)
 	philo = (t_philo *)args;
 	table = philo->table;
 	while ((philo->count_eat < table->max_eat)
-		&& !philo_someone_died(table, philo))
+		&& !philo_check_for_dead(table, philo))
 	{
 		philo_print(philo, PHILO_THINKING);
 		if (philo->left_fork->state == FORK_IDLE)
@@ -37,7 +37,7 @@ void	*philo_routine(void *args)
 			&& philo->left_fork != philo->right_fork)
 			philo_eat_sleep(table, philo);
 	}
-	if (philo_someone_died(table, philo))
+	if (philo_check_for_dead(table, philo))
 		philo_dead_cleanup(table, philo);
 	return (NULL);
 }
@@ -78,7 +78,7 @@ static void	philo_eat_sleep(t_table *table, t_philo *philo)
 	while (gettimeofday_ms() < (philo->last_meal_time + table->time_eat))
 	{
 		usleep(USEC_INCREMENT);
-		if (philo_someone_died(table, philo))
+		if (philo_check_for_dead(table, philo))
 			return ;
 	}
 	philo->count_eat++;
@@ -89,7 +89,7 @@ static void	philo_eat_sleep(t_table *table, t_philo *philo)
 			+ table->time_sleep))
 	{
 		usleep(USEC_INCREMENT);
-		if (philo_someone_died(table, philo))
+		if (philo_check_for_dead(table, philo))
 			return ;
 	}
 }

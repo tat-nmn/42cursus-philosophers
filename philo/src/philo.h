@@ -6,7 +6,7 @@
 /*   By: tnualman <tnualman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:10 by tnualman          #+#    #+#             */
-/*   Updated: 2023/11/03 19:06:30 by tnualman         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:22:43 by tnualman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				ft_atoi(const char *str);
 
 // philo_utils.c
 unsigned long	gettimeofday_ms(void);
-int				philo_someone_died(t_table *table, t_philo *philo);
+int				philo_check_for_dead(t_table *table, t_philo *philo);
 void			philo_init_time(t_philo *philo);
 void			philo_print(t_philo *philo, int action);
 
